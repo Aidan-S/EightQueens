@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 public class ChessSquarePanel {
 	
 	public final static int SIZE = 8;
+	public final static int SIZE2 = 64;
 	
 	ChessSquarePanel(){
 		
@@ -21,16 +22,19 @@ public class ChessSquarePanel {
 		window.setLayout(new GridLayout(SIZE,SIZE));
 		
 		
-		
-		for(int i = 0; i < (SIZE^2); i++) {
-			if(i%2 == 0) {
-				window.add(new MyPanel());
-			} else {
+		boolean green = false;
+		for(int i = 0; i < (SIZE2); i++) {
+			if(green) {
 				window.add(new MyPanel(Color.GREEN, "Q"));
+				if(i+1 % 8 != 0) {
+					green = false;
+			}else {
+				window.add(new MyPanel());
+				green = true;
 			}
 			
 		}
-		
+		//window.add(new MyPanel(Color.GREEN, "Q"));
 		
 		
 		//window.pack();
