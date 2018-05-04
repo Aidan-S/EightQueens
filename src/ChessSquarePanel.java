@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 
 import javax.swing.BoxLayout;
@@ -6,43 +8,43 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class ChessSquarePanel {
+public class ChessSquarePanel extends JPanel{
 	
-	public final static int SIZE = 8;
-	public final static int SIZE2 = 64;
+private final static int FONTSIZE = 25;
+private final static String QUEEN = "Q";
 	
-	ChessSquarePanel(){
-		
+	private boolean isQueen;
+	private Color backColor;
+	
+	ChessSquarePanel() {
+		backColor = Color.BLUE;
+		isQueen = false;
 	}
-	
-	
-	public static void main(String[] args) {
-		JFrame window = new JFrame("myWindow");
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setLayout(new GridLayout(SIZE,SIZE));
+
+	ChessSquarePanel(Color c, boolean b) {
+		backColor = c;
+		isQueen = b;
+	}
+
+	public void paintComponent(Graphics g) {
 		
-		
-		boolean green = false;
-		for(int i = 0; i < (SIZE2); i++) {
-			if(green) {
-				window.add(new MyPanel(Color.GREEN, "Q"));
-				if(i+1 % 8 != 0) {
-					green = false;
-			}else {
-				window.add(new MyPanel());
-				green = true;
-			}
-			
+		super.paintComponent(g);
+
+		g.setFont(new Font("TimesRoman", Font.BOLD, FONTSIZE));
+		this.setBackground(backColor);
+		g.setColor(Color.BLACK);
+
+        int x = (this.getWidth() / 2) - FONTSIZE/4; 
+        int y = (this.getHeight() / 2) + FONTSIZE/4;
+        if(isQueen) {
+        	g.drawString(QUEEN, x, y);
 		}
-		//window.add(new MyPanel(Color.GREEN, "Q"));
-		
-		
-		//window.pack();
-		window.setSize(1000, 1000);
-		
-		
-		window.setVisible(true);
-	
-	
 	}
+  
+   public void setBackColor(Color c) {
+	   backColor = c;
+	   repaint();   
+   }
+
+
 }
