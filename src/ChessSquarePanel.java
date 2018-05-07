@@ -15,7 +15,11 @@ private final static String QUEEN = "Q";
 		backColor = c;
 		isQueen = b;
 	}
-
+	
+	public void setLetter(boolean b) {
+		isQueen = b;
+	}
+	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
