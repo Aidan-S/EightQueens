@@ -9,7 +9,9 @@ public class findingQueens {
 	
 	//private static ArrayList<Integer> queens;
 	private static final int SIZE = 8;
-
+	private static final int SCREEN_SIZE = 700;
+	private static final int DELAY = 200;
+	
 	private JFrame window;
 	ChessSquarePanel[] board;
 
@@ -18,7 +20,7 @@ public class findingQueens {
 		window = new JFrame("myWindow");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setLayout(new GridLayout(SIZE,SIZE));
-		window.setSize(400, 400);
+		window.setSize(SCREEN_SIZE, SCREEN_SIZE);
 		
 		
 		board = new ChessSquarePanel[64];
@@ -27,15 +29,15 @@ public class findingQueens {
 			for(int c = 0; c < SIZE; c++) {
 				if(c%2 == 0) {
 					if(r%2 == 0) {
-						board[(c*8)+r] = (new ChessSquarePanel(Color.GREEN, false));
+						board[(c*SIZE)+r] = (new ChessSquarePanel(Color.GREEN, false));
 					} else {
-						board[(c*8)+r] = (new ChessSquarePanel(Color.BLUE, false));
+						board[(c*SIZE)+r] = (new ChessSquarePanel(Color.BLUE, false));
 					}
 				}else {
 					if(r%2 == 0) {
-						board[(c*8)+r] = (new ChessSquarePanel(Color.BLUE, false));
+						board[(c*SIZE)+r] = (new ChessSquarePanel(Color.BLUE, false));
 					} else {
-						board[(c*8)+r] = (new ChessSquarePanel(Color.GREEN, false));
+						board[(c*SIZE)+r] = (new ChessSquarePanel(Color.GREEN, false));
 					}
 				}
 				
@@ -60,9 +62,13 @@ public class findingQueens {
 	
 	public boolean addQueens(ArrayList<Integer> array) {
 		
-		if(array.size() == 8) {
+		if(array.size() == SIZE) {
 			this.setArray(array);
-			System.out.println(array);
+			String s = "";
+			for(int y = 0; y < array.size(); y++) {
+				s += "[" + array.get(y) + "][" + y + "], ";
+			}
+			System.out.println(s.substring(0, s.length()-2));
 			return true;
 		}
 		
@@ -95,20 +101,7 @@ public class findingQueens {
 	}
 	
 	
-	public static void main(String[] args) {
-		
-		
-		findingQueens test = new findingQueens();
-		
-		ArrayList<Integer> array = new ArrayList<Integer>();
-		
-		test.addQueens(array);
-		
 
-	}
-	
-	
-	
 	public void setArray(ArrayList<Integer> array) {
 		for(int i = 0; i < board.length; i++) {
 			board[i].setLetter(false);
@@ -116,18 +109,28 @@ public class findingQueens {
 		
 		
 		for(int q = 0; q < array.size(); q++) {
-			board[(array.get(q) * 8 ) + q].setLetter(true);
+			board[(array.get(q) * SIZE ) + q].setLetter(true);
 		}
 		
 		
-		
 		try {
-			Thread.sleep(2000);
+			if(array.size() == SIZE) {
+				Thread.sleep(DELAY * 10);
+			}else {
+				Thread.sleep(DELAY);
+			}
+			
 		} catch (InterruptedException e) {
 			
 		}
 		this.window.repaint();
 	}	
 	
+	
+	public static void main(String[] args) {
+		findingQueens test = new findingQueens();
+		ArrayList<Integer> array = new ArrayList<Integer>();
+		test.addQueens(array);
+	}
 	
 }
