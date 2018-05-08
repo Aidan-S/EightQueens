@@ -62,6 +62,7 @@ public class findingQueens {
 		
 		if(array.size() == 8) {
 			this.setArray(array);
+			System.out.println(array);
 			return true;
 		}
 		
@@ -73,7 +74,7 @@ public class findingQueens {
 		        ArrayList<Integer> arrayCopy = (ArrayList<Integer>) array.clone();
 		        arrayCopy.add(k);
 		        setArray(arrayCopy);
-		        return addQueens(arrayCopy);
+		        addQueens(arrayCopy);
 		    }		
 		}
 		
@@ -120,11 +121,11 @@ public class findingQueens {
 		
 		
 		
-		try {
-			Thread.sleep(400);
-		} catch (InterruptedException e) {
-			
-		}
+//		try {
+//			Thread.sleep(70);
+//		} catch (InterruptedException e) {
+//			
+//		}
 		this.window.repaint();
 	}	
 	
