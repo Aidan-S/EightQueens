@@ -11,37 +11,6 @@ public final static int SIZE = 8;
 private static int[] queens = new int[8];
 
 
-	public boolean addQueens(ArrayList<Integer> array) {
-		if(array.size() == 8) {
-			queens = array;
-			return true;
-		}
-		
-		for(int k = 0; k < SIZE; k++) {
-			for(int i = 0; i <= array.size()-1; i++) {
-				int x = array.get(i);
-				int y = i;
-				int newx = k;
-				int newy = array.size();
-				
-				
-				if(k != x  &&  Math.abs(newx-x) != Math.abs(newy-y)  &&  newx + x != newy + y) {
-					ArrayList<Integer> arrayCopy = (ArrayList<Integer>) array.clone();
-					arrayCopy.add(k);
-					return addQueens(arrayCopy);
-				}
-				
-				
-			}
-		}
-		
-		return false;
-		
-	}
-
-	
-
-
 	public static void main(String[] args) {
 		JFrame window = new JFrame("myWindow");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,6 +44,18 @@ private static int[] queens = new int[8];
 			window.add(board[b]);
 		}
 		
+		window.setLayout(new GridLayout(SIZE,SIZE));
+		
+		
+		window.setVisible(true);
+		
+		
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			
+		}
+		
 		
 		queens[0] = 0;
 		queens[1] = 2;
@@ -89,20 +70,11 @@ private static int[] queens = new int[8];
 			board[( queens[q] * 8 ) + q].setLetter(true);
 		}
 		
-		
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			
-		}
+	
 		
 		
 		
-		
-		window.setLayout(new GridLayout(SIZE,SIZE));
-		
-		
-		window.setVisible(true);
+		window.repaint();
 	
 	
 	}
