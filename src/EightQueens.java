@@ -49,22 +49,16 @@ private static int[] queens = new int[8];
 		
 		window.setVisible(true);
 		
-		
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			
-		}
-		
+
 		
 		queens[0] = 0;
-		queens[1] = 2;
-		queens[2] = 4;
-		queens[3] = 6;
-		queens[4] = 1;
-		queens[5] = 3;
-		queens[6] = 5;
-		queens[7] = 7;
+		queens[1] = 4;
+		queens[2] = 7;
+		queens[3] = 5;
+		queens[4] = 2;
+		queens[5] = 6;
+		queens[6] = 1;
+		queens[7] = 3;
 		
 		for(int q = 0; q < queens.length; q++) {
 			board[( queens[q] * 8 ) + q].setLetter(true);

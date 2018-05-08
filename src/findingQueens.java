@@ -121,11 +121,11 @@ public class findingQueens {
 		
 		
 		
-//		try {
-//			Thread.sleep(70);
-//		} catch (InterruptedException e) {
-//			
-//		}
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			
+		}
 		this.window.repaint();
 	}	
 	
