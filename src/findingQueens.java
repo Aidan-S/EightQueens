@@ -8,11 +8,17 @@ public class findingQueens {
 
 	private static final int SIZE = 8;
 	private static final int SCREEN_SIZE = 700;
-	private static final int DELAY = 200;	
+	private static final int DELAY = 10;	
 
 	private JFrame window;
 	ChessSquarePanel[] board;	
 
+	
+	/**
+	 * @author Aidan-S
+	 * date: May 13th, 2018
+	 * method: default constructor that sets up the window
+	 */
 	public findingQueens() {
 		//create the starting parameters for the window
 		window = new JFrame("myWindow");
@@ -54,7 +60,13 @@ public class findingQueens {
 
 	
 
-
+	/**
+	 * @author Aidan-S
+	 * date: May 13th, 2018
+	 * method: recursive method that goes through all the possible ways to set up eight queens
+	 * @param queens: arraylist that says how far down each queen is in its column
+	 * @return: boolean that determines if the method has succeeded in finding a solution or if it has hit a road block
+	 */
 	public boolean addQueens(ArrayList<Integer> queens) {
 		//if the size is SIZE then the board is full and is a solution
 		if(queens.size() == SIZE) {
@@ -87,7 +99,14 @@ public class findingQueens {
 	
 
 	
-
+	/**
+	 * @author Aidan-S
+	 * date: May 13th, 2018
+	 * method: checks to see if a new queen can be added at a certain spot
+	 * @param queens: arraylist that says how far down each queen is in its column
+	 * @param newy: what row the program intends to put in the queen in 
+	 * @return: whether or not the new y is available
+	 */
 	public static boolean available(ArrayList<Integer> queens, int newy) {
 		int newx = queens.size();
 		//checks all the queens in the array to see if the new queen conflicts
@@ -103,9 +122,12 @@ public class findingQueens {
 	
 
 	
-
-
-
+	/**
+	 * @author Aidan-S
+	 * date: May 13th, 2018
+	 * method: changes the letters of the queens on the window
+	 * @param queens: arraylist that says how far down each queen is in its column
+	 */ 
 	public void setArray(ArrayList<Integer> queens) {
 		//reset the board
 		for(int i = 0; i < board.length; i++) {
@@ -131,7 +153,12 @@ public class findingQueens {
 		this.window.repaint();
 	}	
 
-
+	/**
+	 * @author Aidan-S
+	 * date: May 13th, 2018
+	 * method: main method that creates a findingQueens object and then runs addQueens
+	 * @param args: array of string arguments
+	 */
 	public static void main(String[] args) {
 		//test running the addQueens method
 		findingQueens test = new findingQueens();
@@ -141,3 +168,5 @@ public class findingQueens {
 
 
 }
+
+
